@@ -1,0 +1,26 @@
+<form [formGroup]="user">
+  <div class="field">
+    <label class="font-bold block mb-2 field">UserName</label>
+    <input type="text" pInputText formControlName="userId" />
+    <small
+      class="block p-error"
+      *ngIf="user?.get('userId')?.invalid && user?.get('userId')?.dirty"
+    >
+      <span *ngIf="user?.get('userId')?.errors?.['required']">
+        Field is required !
+      </span>
+    </small>
+  </div>
+  <div class="field">
+    <label class="font-bold block mb-2 field">Password</label>
+    <input type="text" pInputText formControlName="password" />
+    <small
+      class="block p-error"
+      *ngIf="user?.get('password')?.invalid && user?.get('password')?.dirty"
+    >
+      <span *ngIf="user?.get('password')?.errors?.['required']">
+        Field is required !
+      </span>
+    </small>
+  </div>
+</form>

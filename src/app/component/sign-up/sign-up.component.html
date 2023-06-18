@@ -1,0 +1,52 @@
+<div class="container">
+  <p-card header="Sign-up">
+    <form [formGroup]="signupForm" (ngSubmit)="create()">
+      <div class="field">
+        <label class="font-bold block mb-2 field">FirstName</label>
+        <input type="text" pInputText formControlName="FirstName" />
+        <!-- <pre>{{signupForm.get('FirstName')?.errors | json}}</pre> -->
+        <!-- <sm-errors [ctrl]="convertToFormControl(signupForm.get('FirstName'))"></sm-errors> -->
+        <small
+          class="block p-error"
+          *ngIf="
+            signupForm?.get('FirstName')?.invalid &&
+            signupForm?.get('FirstName')?.dirty
+          "
+        >
+          <span *ngIf="signupForm?.get('FirstName')?.errors?.['required']">
+            Field is required !
+          </span>
+          <!-- <span *ngIf="signupForm?.get('FirstName')?.errors?.['minlength']">
+            Min
+            {{signupForm?.get('FirstName')?.errors?.['minlength'].requiredLength}}
+            length is required !
+          </span> -->
+        </small>
+      </div>
+
+      <div class="field">
+        <label class="font-bold block mb-2 field">LastName</label>
+        <input type="text" pInputText formControlName="LastName" />
+        <small
+          class="block p-error"
+          *ngIf="
+            signupForm?.get('LastName')?.invalid &&
+            signupForm?.get('LastName')?.dirty
+          "
+        >
+          <span *ngIf="signupForm?.get('LastName')?.errors?.['required']">
+            Field is required !
+          </span>
+        </small>
+      </div>
+
+      <sm-user-name formControlName="UserName"></sm-user-name>
+
+      <p-button
+        label="Sign-up"
+        type="Submit"
+        [disabled]="signupForm.invalid"
+      ></p-button>
+    </form>
+  </p-card>
+</div>
